@@ -16,13 +16,11 @@ function init() {
   function populateVoiceList() {
     voices = synth.getVoices();
 
+    voiceSelect.innerHTML = ""; // needed on some browsers to remove duplicates
+
     for (const voice of voices) {
       const option = document.createElement("option");
       option.textContent = `${voice.name} (${voice.lang})`;
-
-      if (voice.default) {
-        option.textContent += " — DEFAULT";
-      }
 
       option.setAttribute("data-lang", voice.lang);
       option.setAttribute("data-name", voice.name);
